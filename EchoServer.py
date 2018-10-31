@@ -15,6 +15,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     conn, addr = s.accept()
     with conn:
         print('Client Connected from:', addr)
+        f= open("ServerConnectionLog.txt","w+")
+        f.write("Echo Client Connected from:" + str(addr)+"%\n")
+        f.close()
         while True:
             data = conn.recv(1024)
             if not data:
